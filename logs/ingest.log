@@ -1,0 +1,70 @@
+2026-05-11 20:13:26,056 | ingest | INFO | Starting ingestion pipeline
+2026-05-11 20:13:26,056 | ingest | INFO | Loading dataset from /Users/user/Desktop/1261-Project/data/GlobalLandTemperaturesByCity.csv
+2026-05-11 20:13:28,697 | ingest | INFO | Loaded 8599212 rows from CSV
+2026-05-11 20:13:28,697 | ingest | INFO | Starting HDFS ingestion
+2026-05-11 20:13:28,697 | ingest | INFO | Finished HDFS ingestion
+2026-05-11 20:13:28,697 | ingest | INFO | Starting MongoDB ingestion
+2026-05-11 20:13:28,697 | ingest | INFO | Finished MongoDB ingestion
+2026-05-11 20:13:28,697 | ingest | INFO | Starting ElasticSearch ingestion
+2026-05-11 20:13:28,697 | ingest | INFO | Finished ElasticSearch ingestion
+2026-05-11 20:13:28,697 | ingest | INFO | Ingestion pipeline completed successfully
+2026-05-11 20:13:34,265 | ingest | INFO | Starting ingestion pipeline
+2026-05-11 20:13:34,265 | ingest | INFO | Loading dataset from /Users/user/Desktop/1261-Project/data/GlobalLandTemperaturesByCity.csv
+2026-05-11 20:13:36,789 | ingest | INFO | Loaded 8599212 rows from CSV
+2026-05-11 20:13:36,789 | ingest | INFO | Starting HDFS ingestion
+2026-05-11 20:13:36,789 | ingest | INFO | Finished HDFS ingestion
+2026-05-11 20:13:36,789 | ingest | INFO | Starting MongoDB ingestion
+2026-05-11 20:13:36,789 | ingest | INFO | Finished MongoDB ingestion
+2026-05-11 20:13:36,789 | ingest | INFO | Starting ElasticSearch ingestion
+2026-05-11 20:13:36,789 | ingest | INFO | Finished ElasticSearch ingestion
+2026-05-11 20:13:36,789 | ingest | INFO | Ingestion pipeline completed successfully
+2026-05-11 20:15:26,192 | ingest | INFO | Starting ingestion pipeline
+2026-05-11 20:15:26,192 | ingest | INFO | Loading dataset from /Users/user/Desktop/1261-Project/data/GlobalLandTemperaturesByCity.csv
+2026-05-11 20:15:28,778 | ingest | INFO | Loaded 8599212 rows from CSV
+2026-05-11 20:15:28,778 | ingest | INFO | Starting HDFS ingestion
+2026-05-11 20:15:28,778 | ingest | INFO | Finished HDFS ingestion
+2026-05-11 20:15:28,778 | ingest | INFO | Starting MongoDB ingestion
+2026-05-11 20:15:28,778 | ingest | INFO | Finished MongoDB ingestion
+2026-05-11 20:15:28,778 | ingest | INFO | Starting ElasticSearch ingestion
+2026-05-11 20:15:28,778 | ingest | INFO | Finished ElasticSearch ingestion
+2026-05-11 20:15:28,778 | ingest | INFO | Ingestion pipeline completed successfully
+2026-05-11 20:55:23,007 | ingest | INFO | Starting ingestion pipeline
+2026-05-11 20:55:23,008 | ingest | INFO | Loading dataset from /Users/user/Desktop/1261-Project/data/GlobalLandTemperaturesByCity.csv
+2026-05-11 20:55:26,039 | ingest | INFO | Loaded 8599212 rows from CSV
+2026-05-11 20:55:26,039 | ingest | INFO | Starting HDFS ingestion
+2026-05-11 20:55:26,039 | ingest | INFO | Finished HDFS ingestion
+2026-05-11 20:55:26,039 | ingest | INFO | Starting MongoDB ingestion
+2026-05-11 20:55:26,039 | ingest | INFO | Finished MongoDB ingestion
+2026-05-11 20:55:26,039 | ingest | INFO | Starting ElasticSearch ingestion
+2026-05-11 20:55:26,039 | ingest | INFO | Finished ElasticSearch ingestion
+2026-05-11 20:55:26,039 | ingest | INFO | Ingestion pipeline completed successfully
+2026-05-11 21:04:17,580 | ingest | INFO | Starting ingestion pipeline
+2026-05-11 21:04:17,580 | ingest | INFO | Loading dataset from /Users/user/Desktop/1261-Project/data/GlobalLandTemperaturesByCity.csv
+2026-05-11 21:04:20,568 | ingest | INFO | Loaded 8599212 rows from CSV
+2026-05-11 21:04:20,568 | ingest | INFO | Starting HDFS ingestion
+2026-05-11 21:04:20,568 | ingest | INFO | Finished HDFS ingestion
+2026-05-11 21:04:20,568 | ingest | INFO | Starting MongoDB ingestion
+2026-05-11 21:04:20,568 | ingest | INFO | Finished MongoDB ingestion
+2026-05-11 21:04:20,568 | ingest | INFO | Starting ElasticSearch ingestion
+2026-05-11 21:04:20,568 | ingest | INFO | Finished ElasticSearch ingestion
+2026-05-11 21:04:20,568 | ingest | INFO | Ingestion pipeline completed successfully
+2026-05-11 21:06:31,925 | ingest | INFO | Starting ingestion pipeline
+2026-05-11 21:06:31,926 | ingest | INFO | Loading dataset from /Users/user/Desktop/1261-Project/data/GlobalLandTemperaturesByCity.csv
+2026-05-11 21:06:34,815 | ingest | INFO | Loaded 8599212 rows from CSV
+2026-05-11 21:06:34,815 | ingest | INFO | Starting HDFS ingestion
+2026-05-11 21:06:34,815 | ingest | INFO | Finished HDFS ingestion
+2026-05-11 21:06:34,815 | ingest | INFO | Starting MongoDB ingestion
+2026-05-11 21:06:34,815 | ingest | INFO | Finished MongoDB ingestion
+2026-05-11 21:06:34,815 | ingest | INFO | Starting ElasticSearch ingestion
+2026-05-11 21:06:34,815 | ingest | INFO | Finished ElasticSearch ingestion
+2026-05-11 21:06:34,815 | ingest | INFO | Ingestion pipeline completed successfully
+2026-05-11 21:07:09,896 | ingest | INFO | Starting ingestion pipeline
+2026-05-11 21:07:09,897 | ingest | INFO | Loading dataset from /Users/user/Desktop/1261-Project/data/GlobalLandTemperaturesByCity.csv
+2026-05-11 21:07:12,945 | ingest | INFO | Loaded 8599212 rows from CSV
+2026-05-11 21:07:12,946 | ingest | INFO | Starting HDFS ingestion
+2026-05-11 21:07:12,946 | ingest | INFO | Finished HDFS ingestion
+2026-05-11 21:07:12,946 | ingest | INFO | Starting MongoDB ingestion
+2026-05-11 21:07:12,946 | ingest | INFO | Finished MongoDB ingestion
+2026-05-11 21:07:12,946 | ingest | INFO | Starting ElasticSearch ingestion
+2026-05-11 21:07:12,946 | ingest | INFO | Finished ElasticSearch ingestion
+2026-05-11 21:07:12,946 | ingest | INFO | Ingestion pipeline completed successfully

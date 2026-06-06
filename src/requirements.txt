@@ -1,0 +1,6 @@
+pandas
+pymongo
+hdfs
+numpy
+elasticsearch==7.17.9
+

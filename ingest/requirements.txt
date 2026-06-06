@@ -1,0 +1,5 @@
+pandas
+pymongo
+elasticsearch
+requests
+hdfs
