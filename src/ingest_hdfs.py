@@ -10,9 +10,6 @@ HDFS_USER = "root"
 HDFS_PATH = "/user/root/raw/temperatures.csv"
 
 
-# ---------------------------------------------------------
-# 1. UPLOAD DATAFRAME TO HDFS  (you already had this)
-# ---------------------------------------------------------
 def ingest_to_hdfs(df):
     """Upload DataFrame to HDFS using WebHDFS with manual redirect."""
     logger.info("Starting HDFS ingestion")

@@ -38,7 +38,7 @@ def clean_data(df):
         .withColumn("remote_ratio", col("remote_ratio").cast(T.IntegerType()))
     )
 
-    # 3) Column renaming – make names consistent / readable
+  
     df = df.withColumnRenamed("salary_in_usd", "salary_usd")
 
     # 4) Duplicate removal – remove exact duplicate rows
