@@ -1,12 +1,13 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, year, month
+from pyspark.sql.functions import col, when
+from pyspark.sql import types as T
 
 
 def get_spark():
     spark = (
         SparkSession.builder
-        .appName("ClimateSparkJob")
-        .config("spark.mongodb.output.uri", "mongodb://mongodb:27017/climate.clean")
+        .appName("SalarySparkJob")
+        .config("spark.mongodb.output.uri", "mongodb://mongodb:27017/salaries.clean")
         .config(
             "spark.jars.packages",
             "org.mongodb.spark:mongo-spark-connector_2.12:3.0.1,"
@@ -18,31 +19,61 @@ def get_spark():
 
 
 def load_raw_from_hdfs(spark):
-    hdfs_path = "hdfs://hadoop-namenode:9000/user/root/raw/temperatures.csv"
+    hdfs_path = "hdfs://namenode:9000/user/root/raw/ds_salaries.csv"
     df = spark.read.csv(hdfs_path, header=True, inferSchema=True)
     return df
 
 
 def clean_data(df):
-    df = df.dropna(subset=["AverageTemperature"])
+    # 1) Null handling – drop rows with critical nulls
+    critical_cols = ["work_year", "job_title", "salary_in_usd"]
+    df = df.dropna(subset=critical_cols)
 
-    df = df.withColumn("AverageTemperature", col("AverageTemperature").cast("double"))
-    df = df.withColumn(
-        "AverageTemperatureUncertainty",
-        col("AverageTemperatureUncertainty").cast("double")
+    # 2) Data type fixing – cast numeric columns
+    df = (
+        df
+        .withColumn("work_year", col("work_year").cast(T.IntegerType()))
+        .withColumn("salary", col("salary").cast(T.DoubleType()))
+        .withColumn("salary_in_usd", col("salary_in_usd").cast(T.DoubleType()))
+        .withColumn("remote_ratio", col("remote_ratio").cast(T.IntegerType()))
     )
-    df = df.withColumn("dt", col("dt").cast("date"))
 
-    df = df.withColumnRenamed("AverageTemperature", "avg_temp")
-    df = df.withColumnRenamed("AverageTemperatureUncertainty", "temp_uncertainty")
+    # 3) Column renaming – make names consistent / readable
+    df = df.withColumnRenamed("salary_in_usd", "salary_usd")
 
+    # 4) Duplicate removal – remove exact duplicate rows
     df = df.dropDuplicates()
+
+    # Normalize experience level (extra cleaning)
+    df = df.withColumn(
+        "experience_level",
+        when(col("experience_level") == "EN", "Entry")
+        .when(col("experience_level") == "MI", "Mid")
+        .when(col("experience_level") == "SE", "Senior")
+        .when(col("experience_level") == "EX", "Executive")
+        .otherwise(col("experience_level"))
+    )
+
     return df
 
 
 def add_features(df):
-    df = df.withColumn("year", year(col("dt")))
-    df = df.withColumn("month", month(col("dt")))
+    # Remote category
+    df = df.withColumn(
+        "remote_category",
+        when(col("remote_ratio") == 100, "Fully Remote")
+        .when(col("remote_ratio") == 0, "Onsite")
+        .otherwise("Hybrid")
+    )
+
+    # Salary band
+    df = df.withColumn(
+        "salary_band",
+        when(col("salary_usd") < 80000, "Low")
+        .when((col("salary_usd") >= 80000) & (col("salary_usd") < 150000), "Medium")
+        .otherwise("High")
+    )
+
     return df
 
 
@@ -53,7 +84,7 @@ def write_to_mongo(df):
 def write_to_es(df):
     (
         df.write.format("org.elasticsearch.spark.sql")
-        .option("es.resource", "climate_clean/_doc")
+        .option("es.resource", "salaries_clean/_doc")
         .option("es.nodes", "elasticsearch")
         .mode("overwrite")
         .save()

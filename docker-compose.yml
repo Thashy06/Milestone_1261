@@ -1,4 +1,5 @@
 services:
+
   namenode:
     platform: linux/amd64
     image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
@@ -10,10 +11,12 @@ services:
       - "9000:9000"
     volumes:
       - hadoop_namenode:/hadoop/dfs/name
+      - ./data:/app/data
     networks:
       - hadoop
     env_file:
       - ./.hadoop.env
+
 
   datanode:
     platform: linux/amd64
@@ -51,33 +54,38 @@ services:
       - "9300:9300"
     networks:
       - backend
+
   spark-master:
-    image: bde2020/spark-master:3.2.1-hadoop3.2
+    build:
+      context: .
+      dockerfile: Dockerfile.spark
     container_name: spark-master
-    ports:
-      - "8080:8080"
-      - "7077:7077"
     environment:
-      - INIT_DAEMON_STEP=setup_spark
+      - SPARK_MODE=master
+    ports:
+      - "7077:7077"
+      - "8080:8080"
+    volumes:
+      - ./src:/app
     networks:
       - hadoop
-      - backend
-    depends_on:
-      - namenode
-      - datanode
-
+      - backend  
   spark-worker:
-    image: bde2020/spark-worker:3.2.1-hadoop3.2
+    build:
+      context: .
+      dockerfile: Dockerfile.spark
     container_name: spark-worker
     environment:
+      - SPARK_MODE=worker
       - SPARK_MASTER=spark://spark-master:7077
-    ports:
-      - "8081:8081"
-    networks:
-      - hadoop
-      - backend
     depends_on:
       - spark-master
+    volumes:
+      - ./src:/app
+    networks:
+      - hadoop
+      - backend  
+
 
   python:
     build: ./ingest
