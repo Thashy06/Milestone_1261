@@ -3,6 +3,14 @@ import requests
 
 API_KEY = os.getenv("OPENROUTER_API_KEY")
 
+from pymongo import MongoClient
+
+MONGO_URI = "mongodb://mongodb:27017"
+client = MongoClient(MONGO_URI)
+db = client["jobs"]
+collection = db["salaries"]
+
+
 def ask_openrouter(prompt):
     url = "https://openrouter.ai/api/v1/chat/completions"
     headers = {
@@ -10,7 +18,7 @@ def ask_openrouter(prompt):
         "Content-Type": "application/json"
     }
     data = {
-        "model": "google/gemma-2b-it",
+        "model": "meta-llama/llama-3-8b-instruct",
         "messages": [{"role": "user", "content": prompt}]
     }
 
@@ -31,4 +39,3 @@ while True:
 
     answer = ask_openrouter(user_input)
     print("Agent:", answer)
-
